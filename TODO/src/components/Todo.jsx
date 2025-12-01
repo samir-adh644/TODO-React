@@ -1,4 +1,4 @@
-
+import "./Todo.css"
 import { useState, useRef } from "react";
 
 export default function App() {
@@ -36,30 +36,37 @@ export default function App() {
 
   return (
     <>
-      <input ref={inputRef} placeholder="Enter something..." />
-      <button onClick={addItem}>Add</button>
+      <h1>TODO List</h1>
+    <div className="Box">
+      
+    <input ref={inputRef} placeholder="Enter your task:"  id="taskInput"/>
+      <button onClick={addItem} id="btnAdd">Add</button>
 
       <div style={{ marginTop: "1rem" }}>
         {items.map((item, index) => (
-          <p key={index}>
+          <p key={index} id="dataDisp">
             {editingIndex === index ? (
               <>
                 <input
+                id="taskEdit"
                   value={editValue}
                   onChange={(e) => setEditValue(e.target.value)}
                 />
-                <button onClick={() => saveEdit(index)}>Save</button>
+                <button onClick={() => saveEdit(index)} id="btnSave">Save</button>
               </>
             ) : (
               <>
-                {item}{" "}
-                <button onClick={() => startEditing(index)}>Edit</button>
-                <button onClick={() => deleteItem(index)}>Delete</button>
+                {index+1}{") "}{item}{" "}
+                <button onClick={() => startEditing(index)} id="btnEdit">Edit</button>
+                <button onClick={() => deleteItem(index)} id="btnDelete">Delete</button>
               </>
             )}
           </p>
         ))}
-      </div>
+
+    </div>
+     
+   </div>
     </>
   );
 }
